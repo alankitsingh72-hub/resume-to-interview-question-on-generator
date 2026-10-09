@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8fc">
+  <title>Create account | Prepwise</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=4">
+</head>
+<body class="auth-page">
+  <header class="site-header auth-header">
+    <a class="brand" href="index.html"><span class="brand-mark">P</span><span>prepwise</span></a>
+    <a class="nav-link" href="index.html">← Back to home</a>
+  </header>
+  <main class="auth-layout">
+    <section class="auth-aside register-aside">
+      <div class="auth-aside-content">
+        <span class="auth-quote-mark">✳</span>
+        <h1>Make your next interview feel a little more <span>yours.</span></h1>
+        <p>Build a practice plan around your real experience, not someone else’s checklist.</p>
+        <div class="auth-aside-bottom"><span class="auth-aside-line"></span><span>YOUR EXPERIENCE. YOUR NEXT CHAPTER.</span></div>
+      </div>
+      <div class="aside-decoration aside-decoration-one"></div><div class="aside-decoration aside-decoration-two"></div>
+    </section>
+    <section class="auth-panel">
+      <div class="auth-form-wrap register-form-wrap">
+        <div class="auth-form-heading"><div class="eyebrow"><span class="eyebrow-dot"></span> START YOUR PREP</div><h2>Make it <span>personal.</span></h2><p>Create your free account to get started.</p></div>
+        <form id="register-form" class="form-stack" novalidate>
+          <div class="field"><label for="name">Your name</label><input id="name" name="name" type="text" autocomplete="name" placeholder="e.g. Alex Kim" required minlength="2" aria-describedby="name-error"><span id="name-error" class="field-error"></span></div>
+          <div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required aria-describedby="email-error"><span id="email-error" class="field-error"></span></div>
+          <div class="field"><label for="password">Create a password</label><div class="password-field"><input id="password" name="password" type="password" autocomplete="new-password" placeholder="At least 8 characters" required minlength="8" aria-describedby="password-error"><button class="password-toggle" type="button" aria-label="Show password" data-password-toggle="password">Show</button></div><span id="password-error" class="field-error"></span></div>
+          <div class="field"><label for="confirm-password">Confirm password</label><div class="password-field"><input id="confirm-password" name="confirmPassword" type="password" autocomplete="new-password" placeholder="Enter your password again" required aria-describedby="confirm-password-error"><button class="password-toggle" type="button" aria-label="Show password" data-password-toggle="confirm-password">Show</button></div><span id="confirm-password-error" class="field-error"></span></div>
+          <div class="form-error" id="form-error" role="alert"></div>
+          <button class="button button-primary button-submit" type="submit"><span>Create your account</span><span aria-hidden="true">→</span></button>
+        </form>
+        <p class="auth-switch">Already have an account? <a href="login.html">Log in</a></p>
+        <div class="auth-privacy"><span aria-hidden="true">◈</span> Your information is private and secure.</div>
+      </div>
+    </section>
+  </main>
+  <div class="toast-region" aria-live="polite" aria-atomic="false"></div>
+  <script src="js/main.js?v=4" defer></script><script src="js/auth.js?v=4" defer></script>
+</body>
+</html>

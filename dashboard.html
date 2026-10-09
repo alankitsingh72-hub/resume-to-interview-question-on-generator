@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8fc">
+  <title>Your dashboard | Prepwise</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=4">
+</head>
+<body class="app-page">
+  <aside class="app-sidebar" id="app-sidebar">
+    <a class="brand" href="index.html"><span class="brand-mark">P</span><span>prepwise</span></a>
+    <div class="sidebar-label">WORKSPACE</div>
+    <nav class="sidebar-nav" aria-label="Dashboard navigation">
+      <button class="sidebar-link active" type="button" data-view="dashboard"><span class="side-icon">▦</span> Dashboard</button>
+      <button class="sidebar-link" type="button" data-view="analysis"><span class="side-icon">⌕</span> Resume analyzer</button>
+      <button class="sidebar-link" type="button" data-view="matcher"><span class="side-icon">⇄</span> Job matcher</button>
+      <button class="sidebar-link" type="button" data-view="mock"><span class="side-icon">◉</span> Mock interview</button>
+      <button class="sidebar-link" type="button" data-view="project"><span class="side-icon">⌘</span> Project deep-dive</button>
+      <button class="sidebar-link" type="button" data-view="claims"><span class="side-icon">✓</span> Claim practice</button>
+      <button class="sidebar-link" type="button" data-view="progress"><span class="side-icon">▥</span> My progress</button>
+      <button class="sidebar-link" type="button" data-view="roadmap"><span class="side-icon">☷</span> Learning roadmap</button>
+      <button class="sidebar-link" type="button" data-view="vault"><span class="side-icon">▤</span> Saved questions</button>
+      <button class="sidebar-link" type="button" data-view="profile"><span class="side-icon">◉</span> Profile & settings</button>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="sidebar-tip"><span class="tip-spark">✳</span><strong>A little practice goes a long way.</strong><span>Take your questions one at a time.</span></div>
+      <button class="sidebar-user" type="button" data-view="profile"><span class="user-avatar" data-user-initials>?</span><span class="sidebar-user-copy"><strong data-user-name>Student</strong><small>View profile</small></span><span class="user-menu-arrow">···</span></button>
+    </div>
+  </aside>
+  <div class="app-main">
+    <header class="app-topbar">
+      <button class="mobile-sidebar-toggle" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+      <span class="breadcrumb">Workspace <span>/</span> <strong data-current-view-label>Dashboard</strong></span>
+      <a class="topbar-home" href="index.html">Home <span>↗</span></a>
+    </header>
+    <main class="app-content">
+      <section id="dashboard-view" data-app-view="dashboard">
+        <div class="dashboard-heading">
+          <div><div class="eyebrow"><span class="eyebrow-dot"></span> YOUR PREP SPACE</div><h1>Good to have you here, <span data-greeting-name>there</span>.</h1><p>Your next interview is a chance to show what you know. Let’s get you ready.</p></div>
+          <div class="heading-date"><span class="date-spark">✳</span><span><strong>Your next step</strong><small>Upload your resume to begin</small></span></div>
+        </div>
+        <section class="upload-card" aria-labelledby="upload-heading">
+          <div class="upload-card-head"><div><div class="eyebrow"><span class="eyebrow-dot"></span> STEP 01 / YOUR EXPERIENCE</div><h2 id="upload-heading">Start with your resume.</h2><p>We’ll use your experience to create questions that feel relevant to you.</p></div><span class="step-pill">01 <span>OF 02</span></span></div>
+          <div class="drop-zone" id="drop-zone" tabindex="0" role="button" aria-label="Choose a PDF resume or drag and drop it here">
+            <input id="resume-file" type="file" accept=".pdf,application/pdf" hidden>
+            <span class="upload-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M5 15.5v3A1.5 1.5 0 0 0 6.5 20h11a1.5 1.5 0 0 0 1.5-1.5v-3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <strong class="drop-title">Drop your resume here, or <span>browse files</span></strong><span class="drop-subtitle">PDF only <i>·</i> Your resume stays private</span>
+            <div class="selected-file" id="selected-file" hidden><span class="file-icon">PDF</span><span class="selected-file-name"></span><button type="button" class="remove-file" aria-label="Remove selected resume">×</button></div>
+          </div>
+          <div class="upload-actions"><div class="privacy-note"><span>◈</span> Your resume is only used to personalize your questions.</div><button class="button button-primary generate-button" id="generate-button" type="button" disabled><span>Generate my questions</span><span aria-hidden="true">→</span></button></div>
+          <div class="progress-wrap" id="progress-wrap" hidden><div class="progress-top"><span id="progress-label">Getting things ready…</span><span id="progress-percent">0%</span></div><div class="progress-track"><span id="progress-bar"></span></div></div>
+          <div class="generation-error form-error" id="generation-error" role="alert"></div>
+        </section>
+        <section class="questions-section" id="questions-section" hidden>
+          <div class="questions-heading"><div><div class="eyebrow"><span class="eyebrow-dot"></span> STEP 02 / YOUR PRACTICE PLAN</div><h2>Your questions, <span>ready.</span></h2><p>A personalized set of prompts to help you prepare with purpose.</p></div><div class="question-actions"><button class="button button-outline" id="copy-questions" type="button"><span aria-hidden="true">▢</span> Copy all</button><button class="button button-primary" id="generate-again" type="button">Generate again <span aria-hidden="true">↻</span></button></div></div>
+          <div id="questions-list" class="question-groups"></div>
+        </section>
+        <section class="dashboard-empty-note" id="empty-note"><span class="empty-note-icon">✳</span><p><strong>Your experience has a lot to say.</strong><br>Start with your resume and we’ll help you find the questions to bring it to life.</p></section>
+      </section>
+      <section class="platform-view" data-app-view="analysis" hidden>
+        <div class="dashboard-heading"><div><div class="eyebrow"><span class="eyebrow-dot"></span> RESUME ANALYZER</div><h1>Know the story your resume tells.</h1><p>Review cited evidence, questions interviewers may ask, and ways to make your experience clearer.</p></div></div>
+        <div class="platform-card"><div class="platform-card-header"><div><h2>Resume evidence review</h2><p>Analysis uses your latest uploaded resume and AI. Suggestions are not claims about skills you lack.</p></div><button class="button button-primary" id="analyze-resume" type="button">Analyze my resume <span>→</span></button></div><div class="platform-error form-error" id="analysis-error" role="alert"></div><div class="platform-results" id="analysis-results"></div></div>
+      </section>
+      <section class="platform-view" data-app-view="matcher" hidden>
+        <div class="dashboard-heading"><div><div class="eyebrow"><span class="eyebrow-dot"></span> JOB MATCHER</div><h1>Prepare for a specific role.</h1><p>Compare a job description with what your resume actually demonstrates.</p></div></div>
+        <form class="platform-card platform-form" id="job-match-form"><label for="job-description">Paste the job description</label><textarea id="job-description" name="job_description" rows="8" maxlength="12000" placeholder="Paste the responsibilities and qualifications here…" required></textarea><div class="platform-card-footer"><span>Up to 12,000 characters. Your resume is compared privately.</span><button class="button button-primary" type="submit">Compare resume & role <span>→</span></button></div><div class="platform-error form-error" id="match-error" role="alert"></div><div class="platform-results" id="match-results"></div></form>
+      </section>
+      <section class="platform-view" data-app-view="mock" hidden>
+        <div class="dashboard-heading"><div><div class="eyebrow"><span class="eyebrow-dot"></span> AI MOCK INTERVIEW</div><h1>Practice one answer at a time.</h1><p>Your answer is evaluated for relevance, evidence, reasoning, and clarity—not as a prediction of hiring outcomes.</p></div></div>
+        <form class="platform-card platform-form" id="mock-start-form"><div class="platform-form-grid"><div><label for="mock-mode">Interview mode</label><select id="mock-mode" name="mode"><option value="mixed">Mixed</option><option value="technical">Technical</option><option value="hr">HR & behavioral</option><option value="project">Project-based</option></select></div><div><label for="mock-difficulty">Difficulty</label><select id="mock-difficulty" name="difficulty"><option value="beginner">Beginner</option><option value="intermediate" selected>Intermediate</option><option value="advanced">Advanced</option></select></div><div class="platform-field-wide"><label for="target-role">Target role <span class="optional-label">Optional</span></label><input id="target-role" name="role" maxlength="160" placeholder="e.g. Junior data analyst"></div><div class="platform-field-wide"><label for="mock-job-description">Job description <span class="optional-label">Optional</span></label><textarea id="mock-job-description" name="job_description" rows="4" maxlength="8000" placeholder="Paste a job description for role-specific questions…"></textarea></div></div><button class="button button-primary" type="submit">Build my interview <span>→</span></button><div class="platform-error form-error" id="mock-error" role="alert"></div></form>
+        <div class="platform-card interview-card" id="interview-panel" hidden><div class="interview-meta"><span id="interview-mode-label"></span><span id="interview-counter"></span></div><div class="interview-progress"><span id="interview-progress-bar"></span></div><h2 id="interview-question"></h2><div class="platform-error form-error" id="answer-error" role="alert"></div><div id="answer-feedback" class="answer-feedback"></div><form id="interview-answer-form"><label for="interview-answer">Your answer</label><textarea id="interview-answer" rows="6" maxlength="8000" placeholder="Take a moment to structure your answer. Specific examples help…" required></textarea><div class="platform-card-footer"><span>Only you can see your practice responses.</span><button class="button button-primary" type="submit" id="submit-answer">Submit answer <span>→</span></button></div></form><button class="text-button" id="end-interview" type="button">End this practice session</button></div>
+        <div class="platform-card interview-card" id="interview-complete" hidden></div>
+      </section>
+      <section class="platform-view" data-app-view="project" hidden>
+        <div class="dashboard-heading"><div><div class="eyebrow"><span class="eyebrow-dot"></span> PROJECT DEEP-DIVE</div><h1>Follow the decisions behind your work.</h1><p>Build a conversation-style question tree from the project details you provide.</p></div></div>
+        <form class="platform-card platform-form" id="project-form"><label for="project-description">Describe one project you worked on</label><textarea id="project-description" rows="5" maxlength="8000" placeholder="What was the project, what did you personally work on, and what technologies or decisions were involved?" required></textarea><div class="platform-card-footer"><span>We won’t assume you implemented details you haven’t stated.</span><button class="button button-primary" type="submit">Build question tree <span>→</span></button></div><div class="platform-error form-error" id="project-error" role="alert"></div><div class="platform-results" id="project-results"></div></form>
+      </section>
+      <section class="platform-view" data-app-view="claims" hidden>
+        <div class="dashboard-heading"><div><div class="eyebrow"><span class="eyebrow-dot"></span> CLAIM PRACTICE</div><h1>Practice defending resume claims.</h1><p>Review exact resume excerpts and prepare evidence-based explanations. This does not determine whether a claim is true.</p></div></div>
+        <div class="platform-card"><div class="platform-card-header"><div><h2>Claims worth preparing</h2><p>Questions focus on measurements, individual contributions, and support for an outcome.</p></div><button class="button button-primary" id="load-claims" type="button">Find claims to practice <span>→</span></button></div><div class="platform-error form-error" id="claims-error" role="alert"></div><div class="platform-results" id="claims-results"></div></div>
+      </section>
+      <section class="platform-view" data-app-view="progress" hidden>
+        <div class="dashboard-heading"><div><div class="eyebrow"><span class="eyebrow-dot"></span> PRACTICE HISTORY</div><h1>See what your practice shows.</h1><p>Indicators below are calculated from your actual mock-interview answer evaluations.</p></div><button class="button button-outline" id="refresh-progress" type="button">Refresh <span>↻</span></button></div>
+        <div class="platform-card"><div class="progress-summary" id="progress-summary"></div><p class="score-disclaimer">Practice scores reflect AI feedback on relevance, evidence, reasoning, and clarity. They are informal preparation indicators—not probabilities of getting hired. No practice data means no score.</p><div class="platform-results" id="progress-results"></div></div>
+      </section>
+      <section class="platform-view" data-app-view="roadmap" hidden>
+        <div class="dashboard-heading"><div><div class="eyebrow"><span class="eyebrow-dot"></span> YOUR LEARNING ROADMAP</div><h1>Choose a useful next step.</h1><p>Generate goals from your actual resume analysis, role match, or interview feedback. No deadlines are assumed.</p></div><button class="button button-primary" id="generate-roadmap" type="button">Build my roadmap <span>→</span></button></div>
+        <div class="platform-card"><div class="platform-error form-error" id="roadmap-error" role="alert"></div><div id="roadmap-list" class="roadmap-list"></div></div>
+      </section>
+      <section class="platform-view" id="vault-view" data-app-view="vault" hidden>
+        <div class="dashboard-heading"><div><div class="eyebrow"><span class="eyebrow-dot"></span> PERSONAL KNOWLEDGE VAULT</div><h1>Keep the questions worth revisiting.</h1><p>Save a difficult interview question and return to it when you’re ready.</p></div></div>
+        <form class="platform-card platform-form vault-add-form" id="save-question-form"><label for="save-question">Add a question to practice</label><div class="vault-add-row"><input id="save-question" name="question" maxlength="1200" placeholder="Type or paste a question…" required><button class="button button-primary" type="submit">Save question</button></div><div class="platform-error form-error" id="vault-error" role="alert"></div></form>
+        <div class="platform-card vault-card"><div class="platform-card-header"><div><h2>Your saved questions</h2><p>Saved questions are private to your account.</p></div><input class="vault-search" id="vault-search" type="search" placeholder="Search saved questions…" aria-label="Search saved questions"></div><div id="vault-list" class="platform-results"></div></div>
+      </section>
+      <section id="profile-view" data-app-view="profile" hidden>
+        <div class="dashboard-heading"><div><div class="eyebrow"><span class="eyebrow-dot"></span> YOUR ACCOUNT</div><h1>Your profile.</h1><p>A little space to keep your account details in view.</p></div></div>
+        <div class="profile-card"><div class="profile-card-banner"><span class="profile-large-avatar" data-user-initials>?</span><div><span class="eyebrow">PREPWISE MEMBER</span><h2 data-user-name>Student</h2></div></div><div class="profile-details"><div><span>Full name</span><strong data-profile-name>—</strong></div><div><span>Email address</span><strong data-profile-email>—</strong></div><div><span>Account</span><strong>Student</strong></div></div><div class="profile-actions"><p>Your details help us personalize your interview prep.</p><button class="button button-outline logout-button" type="button">Log out <span aria-hidden="true">↗</span></button></div></div>
+      </section>
+    </main>
+  </div>
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+  <div class="toast-region" aria-live="polite" aria-atomic="false"></div>
+  <script src="js/main.js?v=4" defer></script><script src="js/dashboard.js?v=4" defer></script><script src="js/platform.js?v=4" defer></script>
+</body>
+</html>

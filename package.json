@@ -1,0 +1,22 @@
+{
+  "name": "prepwise",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Resume-based interview practice app with a local API server.",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "multer": "^2.0.2",
+    "pdf-parse": "^2.4.5"
+  },
+  "devDependencies": {
+    "pdfkit": "^0.20.2"
+  }
+}
